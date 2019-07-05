@@ -1,10 +1,12 @@
 import React from "react";
+import letter from "./letter";
 
 class App extends React.Component {
   state = {
     salary: "",
     profession: "",
-    dropdown: ""
+    dropdown: "",
+    letter: ""
   };
 
   arr = ["ram", "abdul", "jim"];
@@ -30,8 +32,15 @@ class App extends React.Component {
           name="salary"
           type="text"
           value={this.state.salary}
-          onChange={e => this.setState({ salary: e.target.value })}
+          onChange={e =>
+            this.setState({
+              salary: e.target.value,
+              letter: letter(e.target.value)
+            })
+          }
         />
+        {this.state.letter}
+        <div>{letter(this.state.salary)}</div>
         {this.state.salary !== "" ? (
           <>
             <label htmlFor="profession">profession</label>
